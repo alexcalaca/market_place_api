@@ -1,25 +1,55 @@
-# README
+<center><img src="" width="300" height="150" align="center"></center>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Title
 
-Things you may want to cover:
+> by AC Alexandre Calaça
 
-* Ruby version
+<br/>
 
-* System dependencies
+Description:  In progress.
 
-* Configuration
+Live view: In progress.
 
-* Database creation
+Diagram: In progress.
 
-* Database initialization
+___
 
-* How to run the test suite
+## Technologies used
+Main Ruby
 
-* Services (job queues, cache servers, search engines, etc.)
+___
+ 
 
-* Deployment instructions
+## Features
 
-* ...
-# market_place_api
+___
+
+## Setup
+### Requirements
+- Ruby 
+- Rails 
+- Node 
+- Postgresql
+
+
+### Usage
+1. Create the database
+> rails db:create
+
+2. Perform migrations
+> rails db:migrate
+
+3. Install gems and dependencies
+> bundle install
+> yarn install
+
+4. Populate the database
+> rails db:seed
+
+### 
+___
+
+
+## License
+
+It's available under the terms of the [MIT License](http://opensource.org/licenses/MIT).
