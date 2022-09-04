@@ -1,5 +1,6 @@
 <center><img src="" width="300" height="150" align="center"></center>
 
+
 # Title
 
 > by AC Alexandre Calaça
@@ -21,6 +22,7 @@ ___
  
 
 ## Features
+- Authentication mechanism through JSON Web Tokens (JWT);
 
 ___
 
