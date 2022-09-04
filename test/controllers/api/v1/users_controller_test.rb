@@ -31,5 +31,16 @@ class Api::V1::UsersControllerTest < ActionDispatch::IntegrationTest
     # that the server understands the content type of the request entity, and the syntax of the
     # request entity is correct, but it was unable to process the contained instructions    
   end
+
+  test "should update user" do
+    patch api_v1_user_url(@user), params: { user: {
+      email: @user.email, password: 'default' } }, as: :json
+    assert_response :success # Http status code 200
+  end
   
+  test "should not update user when invalid params are sent" do
+    patch api_v1_user_url(@user), params: { user: {
+      email: 'bad_email', password: '123456' } }, as: :json
+    assert_response :unprocessable_entity # Http code 422 Unprocessable Entity
+  end 
 end
