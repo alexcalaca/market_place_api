@@ -43,4 +43,11 @@ class Api::V1::UsersControllerTest < ActionDispatch::IntegrationTest
       email: 'bad_email', password: '123456' } }, as: :json
     assert_response :unprocessable_entity # Http code 422 Unprocessable Entity
   end 
+
+  test "should destroy user" do
+    assert_difference('User.count', -1) do
+      delete api_v1_user_url(@user), as: :json
+    end
+    assert_response :no_content #Http status code 204
+  end
 end
