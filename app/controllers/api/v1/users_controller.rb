@@ -1,5 +1,5 @@
 class Api::V1::UsersController < ApplicationController
-	before_action :set_user, only: %i[show update]
+	before_action :set_user, only: %i[show update destroy]
 
 	def show
 		render json: @user
@@ -22,6 +22,11 @@ class Api::V1::UsersController < ApplicationController
 			render json: @user.errors, status: :unprocessable_entity # Http status code 422
 		end
 	end	
+
+	def destroy
+		@user.destroy
+		head 204
+	end
 
 	private
 	def user_params
