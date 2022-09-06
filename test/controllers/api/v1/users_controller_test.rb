@@ -34,8 +34,19 @@ class Api::V1::UsersControllerTest < ActionDispatch::IntegrationTest
 
   test "should update user" do
     patch api_v1_user_url(@user), params: { user: {
-      email: @user.email, password: 'default' } }, as: :json
-    assert_response :success # Http status code 200
+      email: @user.email, password: 'default' } },
+      headers: { Authorization: JsonWebToken.encode(user_id: @user.id)},
+      as: :json
+    assert_response :success
+  end
+
+  test "should forbid update user" do
+    patch api_v1_user_url(@user), params: { user: {
+      email: @user.email, password: 'default' } },
+      as: :json
+    assert_response :forbidden # The 403 (Forbidden) status
+    # code indicates that the server understood the request
+    # but refuses to authorize it
   end
   
   test "should not update user when invalid params are sent" do
@@ -46,8 +57,18 @@ class Api::V1::UsersControllerTest < ActionDispatch::IntegrationTest
 
   test "should destroy user" do
     assert_difference('User.count', -1) do
-      delete api_v1_user_url(@user), as: :json
+      delete api_v1_user_url(@user),
+      headers: { Authorization: JsonWebToken.encode(user_id: @user.id) },
+      as: :json
     end
     assert_response :no_content #Http status code 204
+  end
+
+  test "should forbid destroy user" do
+    assert_no_difference('User.count') do
+      delete api_v1_user_url(@user),
+      as: :json
+    end
+    assert_response :forbidden # Http status code 403
   end
 end
