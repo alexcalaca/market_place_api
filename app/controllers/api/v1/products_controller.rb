@@ -1,6 +1,7 @@
 class Api::V1::ProductsController < ApplicationController
+	before_action :set_product, only: %i[show update]
 	before_action :check_login, only: %i[create]
-
+	
 	def index
 		render json: Product.all
 	end
@@ -22,5 +23,9 @@ class Api::V1::ProductsController < ApplicationController
 	private
 	def product_params
 		params.require(:product).permit(:title, :price, :published)
+	end	
+
+	def set_product
+		@product = Product.find(params[:id])
 	end
 end
