@@ -17,8 +17,17 @@ class Api::V1::ProductsController < ApplicationController
 			render json: product, status: :created		
 		else
 			render json: { errors: product.errors }, 
-			status: :unprocessable_entity
+			status: :unprocessable_entity #HTTP 422 Unprocessable Entity
 		end
+	end
+
+	def update
+		if @product.update(product_params)
+			render json: @product
+		else
+			render json: @product.errors, status: :unprocessable_entity #HTTP 422 Unprocessable Entity 
+		end
+
 	end
 
 	private
