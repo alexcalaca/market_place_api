@@ -1,5 +1,5 @@
 class Api::V1::ProductsController < ApplicationController
-	before_action :set_product, only: %i[show update]
+	before_action :set_product, only: %i[show update destroy]
 	before_action :check_login, only: %i[create]
 	before_action :check_owner, only: %i[update]
 	
@@ -27,7 +27,11 @@ class Api::V1::ProductsController < ApplicationController
 		else
 			render json: @product.errors, status: :unprocessable_entity #HTTP 422 Unprocessable Entity 
 		end
+	end
 
+	def destroy
+		@product.destroy
+		head 204
 	end
 
 	private
