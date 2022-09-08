@@ -16,7 +16,7 @@ Diagram: In progress.
 ___
 
 ## Technologies used
-Main Ruby
+Mainly Ruby
 
 ___
  
@@ -48,7 +48,13 @@ ___
 4. Populate the database
 > rails db:seed
 
-### 
+___
+### Comments
+FastJSON API uses serializers. Serializers represent Ruby classes that
+will be responsible for converting a model into a Hash or a JSON.
+
+
+
 ___
 
 
