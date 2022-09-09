@@ -20,4 +20,9 @@ class ProductTest < ActiveSupport::TestCase
     assert_equal [products(:two), products(:one)], 
       Product.above_or_equal_to_price(200).sort
   end
+
+  test "should filter products by price lower and sort them" do
+    assert_equal [products(:another_tv)],
+      Product.below_or_equal_to_price(200).sort
+  end
 end
