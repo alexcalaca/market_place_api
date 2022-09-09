@@ -14,4 +14,8 @@ class Product < ApplicationRecord
   scope :below_or_equal_to_price, lambda { |price|
     where('price <= ?', price)
   }
+
+  scope :recent, lambda {
+    order(:updated_at)
+  }
 end
