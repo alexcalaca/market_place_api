@@ -25,4 +25,10 @@ class ProductTest < ActiveSupport::TestCase
     assert_equal [products(:another_tv)],
       Product.below_or_equal_to_price(200).sort
   end
+
+  test "should sort product by most recent" do
+    products(:two).touch
+    assert_equal [products(:another_tv), products(:one), products(:two)],
+      Product.recent.to_a 
+  end
 end
