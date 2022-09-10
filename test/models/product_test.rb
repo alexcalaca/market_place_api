@@ -45,4 +45,9 @@ class ProductTest < ActiveSupport::TestCase
   test 'should get all products when no parameters' do
     assert_equal Product.all.to_a, Product.search({})
   end
+
+  test 'search should filter by product ids' do
+    search_hash = { product_ids: [products(:one).id] }
+    assert_equal [products(:one)], Product.search(search_hash)
+  end
 end
