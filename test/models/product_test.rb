@@ -35,5 +35,10 @@ class ProductTest < ActiveSupport::TestCase
   test 'search should not find "videogame" and "100" as min price' do
     search_hash = { keyword: 'videogame', min_price: 100 }
     assert Product.search(search_hash).empty?
-  end  
+  end
+
+  test 'search should find cheap TV' do
+    search_hash = { keyword: 'tv', min_price: 50, max_price: 150 }
+    assert_equal [products(:another_tv)], Product.search(search_hash)
+  end
 end
