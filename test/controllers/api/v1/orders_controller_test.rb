@@ -2,7 +2,11 @@ require "test_helper"
 
 class Api::V1::OrdersControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @order = orders(:one)
+    @order = products(:one)
+    @order_params = { order: {
+      product_id: [products(:one).id, products(:two).id],
+      total: 50
+    } }
   end
 
   test 'should forbid orders for unlogged' do
