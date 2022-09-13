@@ -2,7 +2,8 @@ require "test_helper"
 
 class Api::V1::OrdersControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @order = products(:one)
+    @order = orders(:one)
+
     @order_params = { order: {
       product_id: [products(:one).id, products(:two).id],
       total: 50
@@ -25,9 +26,8 @@ class Api::V1::OrdersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should show order' do
-    get api_v1_order_url(@order),
-      headers: {
-        Authorization: JsonWebToken.encode(user_id: @order.user_id) },
+    get api_v1_order_url(id: @order.id),
+      headers: { Authorization: JsonWebToken.encode(user_id: @order.user_id) },
       as: :json
     assert_response :success
 
