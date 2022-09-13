@@ -41,5 +41,15 @@ class Api::V1::OrdersControllerTest < ActionDispatch::IntegrationTest
       post api_v1_orders_url, params: @order_params, as: :json
     end
     assert_response :forbidden #The 403 status code indicates that the server understood the request but refuses to authorize it
-  end  
+  end
+
+  test 'should create order with two products' do
+    assert_difference('Order.count', 1) do
+      post api_v1_orders_url,
+      params: @order_params,
+      headers: { Authorization: JsonWebToken.encode(user_id: @order.user_id) },
+      as: :json
+    end
+    assert_response :created # Http status code 201
+  end
 end
