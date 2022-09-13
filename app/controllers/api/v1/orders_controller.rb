@@ -10,7 +10,7 @@ class Api::V1::OrdersController < ApplicationController
 
 		if order
 			options = { include: [:products] }
-			render json: OrderSerializer.new(order, options).serializable_hash.to_json
+			render json: OrderSerializer.new(order, options).serializable_hash
 		else
 			head 404
 		end		
