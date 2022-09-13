@@ -1,6 +1,10 @@
 require "test_helper"
 
 class OrderMailerTest < ActionMailer::TestCase
+  setup do
+    @order = orders(:one)
+  end
+
   test "send_confirmation" do
     mail = OrderMailer.send_confirmation
     assert_equal "Send confirmation", mail.subject
