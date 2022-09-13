@@ -35,4 +35,11 @@ class Api::V1::OrdersControllerTest < ActionDispatch::IntegrationTest
     include_product_attr = json_response['included'][0]['attributes']
     assert_equal @order.products.first.title, include_product_attr['title']
   end
+
+  test 'should forbid create order for unlogged' do
+    assert_no_difference('Order.count') do
+      post api_v1_orders_url, params: @order_params, as: :json
+    end
+    assert_response :forbidden #The 403 status code indicates that the server understood the request but refuses to authorize it
+  end  
 end
