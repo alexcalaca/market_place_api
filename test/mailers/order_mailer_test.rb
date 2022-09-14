@@ -5,12 +5,12 @@ class OrderMailerTest < ActionMailer::TestCase
     @order = orders(:one)
   end
 
-  test "send_confirmation" do
-    mail = OrderMailer.send_confirmation
-    assert_equal "Send confirmation", mail.subject
-    assert_equal ["to@example.org"], mail.to
-    assert_equal ["from@example.com"], mail.from
-    assert_match "Hi", mail.body.encoded
+  test "should be set to be delivered to the user from the order passed in" do
+    mail = OrderMailer.send_confirmation(@order)
+    assert_equal "Order confirmation", mail.subject
+    assert_equal [@order.user.email], mail.to
+    assert_equal ["no-reply@marketplace.com"], mail.from
+    assert_match "Order: ##{@order.id}", mail.body.encoded
+    assert_match "You ordered #{@order.products.count} products", mail.body.encoded
   end
-
 end
