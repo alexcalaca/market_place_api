@@ -54,4 +54,16 @@ class Api::V1::OrdersControllerTest < ActionDispatch::IntegrationTest
     end
     assert_response :created # Http status code 201
   end
+
+  test 'should create order with two products and placements' do
+    assert_difference('Order.count', 1) do
+      assert_difference('Placement.count', 2) do
+        post api_v1_orders_url,
+          params: @order_params,
+          headers: { Authorization: JsonWebToken.encode(user_id: @order.user_id) },
+          as: :json
+      end
+    end
+    assert_response :created # The HTTP 201 Created success status response code indicates that the request has succeeded and has led to the creation of a resource.
+  end
 end
