@@ -1,7 +1,7 @@
 require "test_helper"
 
 class PlacementTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  setup do
+    @placement = placements(:one)
+  end
 end
