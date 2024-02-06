@@ -1,8 +1,11 @@
 <center><img src="https://github.com/alexcalaca/market_place_api/assets/22925257/bc7ceca7-da97-4ffa-9a83-9c6e78363142" width="300" height="150" align="center"></center>
 
-# Title
+## Title
 > Market place api application  by AC Alexandre Calaça
 <br/>
+
+## Description
+Application based on the book "API on Rails 6" written by Alexandre Rousseau. This application uses Rails 6,  follows the JSON specification, incorporates JWT, and implements various methods to optimize and cache the API.
 
 ___
 
