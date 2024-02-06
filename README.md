@@ -1,28 +1,20 @@
-<center><img src="" width="300" height="150" align="center"></center>
-
+<center><img src="https://github.com/alexcalaca/market_place_api/assets/22925257/bc7ceca7-da97-4ffa-9a83-9c6e78363142" width="300" height="150" align="center"></center>
 
 # Title
-
-> by AC Alexandre Calaça
-
+> Market place api application  by AC Alexandre Calaça
 <br/>
 
-Description:  In progress.
-
-Live view: In progress.
-
-Diagram: In progress.
-
 ___
-
-## Technologies used
-Mainly Ruby
-
-___
- 
 
 ## Features
-- Authentication mechanism through JSON Web Tokens (JWT);
+It's a market place app written in Rails 6, it's based on the book [**API on Rails 6**](https://leanpub.com/apionrails6). It uses:
+
+- Git for version control
+- JSON for responses
+- unit and funcional tests test end-points
+- JSON Web Tokens (JWT) to set up authentication
+- JSON:API specification
+- Optimization and caching the API
 
 ___
 
